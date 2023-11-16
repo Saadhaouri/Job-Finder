@@ -1,3 +1,4 @@
+import "./Navbar.css";
 const NavBar = () => {
   return (
     <nav className="navBar flex justify-between items-center p-[3rem]">
@@ -8,7 +9,9 @@ const NavBar = () => {
       </div>
       <ul className="menu flex gap-8">
         <li className="menuList text-[#6f6f6f] hover:text-blueColor">Jobs</li>
-        <li className="menuList text-[#6f6f6f] hover:text-blueColor">Companies</li>
+        <li className="menuList text-[#6f6f6f] hover:text-blueColor">
+          Companies
+        </li>
         <li className="menuList text-[#6f6f6f] hover:text-blueColor">About</li>
         <li className="menuList text-[#6f6f6f] hover:text-blueColor">
           Contact
