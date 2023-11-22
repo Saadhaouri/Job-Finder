@@ -16,12 +16,12 @@ interface JobCardProps {
 
 const JobCard: React.FC<JobCardProps> = ({ job, handlshow }) => {
   return (
-    <div className="group group/item singleJob w-[250px] p-[20px] bg-white  rounded-[10px] hover:bg-blueColor  shadow-lg shadow-greyIsh-400/700 hover:shadow-lg">
+    <div className="group group/item singleJob w-[250px] p-[20px] bg-white  rounded-[10px] hover:bg-blueColor   shadow-lg shadow-greyIsh-400/700 hover:shadow-lg">
       <span className="flex justify-between items-center gap-4">
         <h1 className="text-[16px] font-semibold text-textColor group-hover:text-white ">
           {job.JobTitle}
         </h1>
-        <span className="flex justify-center gap-1">
+        <span className="flex justify-center gap-1 text-[8px]">
           <BiTimeFive />
           {job.time}
         </span>

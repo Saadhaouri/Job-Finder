@@ -8,6 +8,9 @@ export default {
         greyIsh: "#f1f4f8",
         textColor: "#000",
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],

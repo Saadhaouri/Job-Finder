@@ -7,7 +7,7 @@ const Search = () => {
   return (
     <div className=" searchDiv grid gap-10 bg-greyIsh rounded-[10px] p-[2rem] m-3   ">
       <form action="">
-        <div className="firstDiv flex justify-between items-center rounded-[8px] gap-[10px] bg-white p-5 shadow-lg shadow-greyIsh-700 ">
+        <div className="firstDiv flex  justify-evenly  items-center rounded-[8px] gap-[10px] bg-white p-5 shadow-lg shadow-greyIsh-700 ">
           <div className=" flex gap-2 items-center  ">
             <IoSearchSharp className=" text-[25px] icon " />
             <input
@@ -35,7 +35,7 @@ const Search = () => {
             />
             <IoIosCloseCircle className=" text-[30px] text-[#a5a6a6] hever:text-textColor icon  " />
           </div>
-          <button className=" bg-blueColor h-full p-5 px-10 rounded-[6px] text-white cursor-pointer ">
+          <button className=" bg-blueColor h-full p-5 px-10 rounded-[6px] text-white cursor-pointer">
             Search
           </button>
         </div>
@@ -60,7 +60,7 @@ const Search = () => {
         <div className="secDiv flex gap-8 items-center justify-between ">
           <div className="singleSeach flex items-center gap-2">
             <label htmlFor="relevance" className="text-[#808080] font-semibold">
-              Type:{" "}
+              Type:
             </label>
             <select
               name="level"

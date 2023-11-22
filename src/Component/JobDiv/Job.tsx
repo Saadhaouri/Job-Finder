@@ -24,7 +24,7 @@ const Job = () => {
     <div>
       <div className="JobContainer flex gap-10 justify-center flex-wrap items-center py-10">
         {currentJobs.map((job) => (
-          <JobCard job={job} handlshow={handlshow} />
+          <JobCard key={job.id} job={job} handlshow={handlshow} />
         ))}
       </div>
       <ReactPaginate

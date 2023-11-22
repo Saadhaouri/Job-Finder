@@ -1,9 +1,9 @@
-li {
+.menuList {
   list-style: none;
   cursor: pointer;
   position: relative;
 }
-li:hover::before {
+.menuList:hover::before {
   position: absolute;
   content: "";
   width: 100%;
