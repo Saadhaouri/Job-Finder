@@ -1,0 +1,339 @@
+{
+	"knownSymbols": {
+		"defineConfig": [
+			{
+				"name": "defineConfig",
+				"module": "vite",
+				"isDefault": false
+			},
+			{
+				"name": "defineConfig",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\vite.config.ts",
+				"isDefault": true
+			}
+		],
+		"react": [
+			{
+				"name": "react",
+				"module": "@vitejs/plugin-react-swc",
+				"isDefault": true
+			}
+		],
+		"RegisterPage": [
+			{
+				"name": "RegisterPage",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Pages\\RegisterPage.tsx",
+				"isDefault": true
+			}
+		],
+		"Link": [
+			{
+				"name": "Link",
+				"module": "react-router-dom",
+				"isDefault": false
+			}
+		],
+		"CountryDropdown": [
+			{
+				"name": "CountryDropdown",
+				"module": "react-country-region-selector",
+				"isDefault": false
+			}
+		],
+		"RegionDropdown": [
+			{
+				"name": "RegionDropdown",
+				"module": "react-country-region-selector",
+				"isDefault": false
+			}
+		],
+		"useState": [
+			{
+				"name": "useState",
+				"module": "react",
+				"isDefault": false
+			}
+		],
+		"Controller": [
+			{
+				"name": "Controller",
+				"module": "react-hook-form",
+				"isDefault": false
+			}
+		],
+		"SubmitHandler": [
+			{
+				"name": "SubmitHandler",
+				"module": "react-hook-form",
+				"isDefault": false
+			}
+		],
+		"useForm": [
+			{
+				"name": "useForm",
+				"module": "react-hook-form",
+				"isDefault": false
+			}
+		],
+		"yup": [
+			{
+				"name": "yup",
+				"module": "yup",
+				"isDefault": true,
+				"asDefinition": "* as yup"
+			}
+		],
+		"yupResolver": [
+			{
+				"name": "yupResolver",
+				"module": "@hookform/resolvers/yup",
+				"isDefault": false
+			}
+		],
+		"v4 as uuidv4": [
+			{
+				"name": "v4 as uuidv4",
+				"module": "uuid",
+				"isDefault": false
+			}
+		],
+		"LoginPage": [
+			{
+				"name": "LoginPage",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Pages\\LoginPage.tsx",
+				"isDefault": true
+			}
+		],
+		"FcGoogle": [
+			{
+				"name": "FcGoogle",
+				"module": "react-icons/fc",
+				"isDefault": false
+			}
+		],
+		"JobsPage": [
+			{
+				"name": "JobsPage",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Pages\\JobsPage.tsx",
+				"isDefault": true
+			}
+		],
+		"ContactPage": [
+			{
+				"name": "ContactPage",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Pages\\ContactPage.tsx",
+				"isDefault": true
+			}
+		],
+		"CompaniesPage": [
+			{
+				"name": "CompaniesPage",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Pages\\CompaniesPage.tsx",
+				"isDefault": true
+			}
+		],
+		"BlogPage": [
+			{
+				"name": "BlogPage",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Pages\\BlogPage.tsx",
+				"isDefault": true
+			}
+		],
+		"AboutPage": [
+			{
+				"name": "AboutPage",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Pages\\AboutPage.tsx",
+				"isDefault": true
+			}
+		],
+		"React": [
+			{
+				"name": "React",
+				"module": "react",
+				"isDefault": true
+			}
+		],
+		"ReactDOM": [
+			{
+				"name": "ReactDOM",
+				"module": "react-dom/client",
+				"isDefault": true
+			}
+		],
+		"AppContext": [
+			{
+				"name": "AppContext",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Data\\AppContext.tsx",
+				"isDefault": true
+			}
+		],
+		"createContext": [
+			{
+				"name": "createContext",
+				"module": "react",
+				"isDefault": false
+			}
+		],
+		"jobs": [
+			{
+				"name": "jobs",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Data\\Alljobs.tsx",
+				"isDefault": true
+			}
+		],
+		"Value": [
+			{
+				"name": "Value",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Component\\ValueDiv\\Value.tsx",
+				"isDefault": true
+			}
+		],
+		"Search": [
+			{
+				"name": "Search",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Component\\SearchDiv\\Search.tsx",
+				"isDefault": true
+			}
+		],
+		"IoSearchSharp": [
+			{
+				"name": "IoSearchSharp",
+				"module": "react-icons/io5",
+				"isDefault": false
+			}
+		],
+		"IoIosCloseCircle": [
+			{
+				"name": "IoIosCloseCircle",
+				"module": "react-icons/io",
+				"isDefault": false
+			}
+		],
+		"GoHome": [
+			{
+				"name": "GoHome",
+				"module": "react-icons/go",
+				"isDefault": false
+			}
+		],
+		"CiLocationOn": [
+			{
+				"name": "CiLocationOn",
+				"module": "react-icons/ci",
+				"isDefault": false
+			}
+		],
+		"NavBar": [
+			{
+				"name": "NavBar",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Component\\NavBar\\NavBar.tsx",
+				"isDefault": true
+			}
+		],
+		"useLocation": [
+			{
+				"name": "useLocation",
+				"module": "react-router-dom",
+				"isDefault": false
+			}
+		],
+		"Home": [
+			{
+				"name": "Home",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Component\\Main\\Home.tsx",
+				"isDefault": true
+			}
+		],
+		"JobCard": [
+			{
+				"name": "JobCard",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Component\\JobDiv\\JobCard.tsx",
+				"isDefault": true
+			}
+		],
+		"BiTimeFive": [
+			{
+				"name": "BiTimeFive",
+				"module": "react-icons/bi",
+				"isDefault": false
+			}
+		],
+		"Job": [
+			{
+				"name": "Job",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Component\\JobDiv\\Job.tsx",
+				"isDefault": true
+			}
+		],
+		"ReactPaginate": [
+			{
+				"name": "ReactPaginate",
+				"module": "react-paginate",
+				"isDefault": true
+			}
+		],
+		"Footer": [
+			{
+				"name": "Footer",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\Component\\FooterDiv\\Footer.tsx",
+				"isDefault": true
+			}
+		],
+		"FaFacebookF": [
+			{
+				"name": "FaFacebookF",
+				"module": "react-icons/fa",
+				"isDefault": false
+			}
+		],
+		"FaTwitter": [
+			{
+				"name": "FaTwitter",
+				"module": "react-icons/fa",
+				"isDefault": false
+			}
+		],
+		"AiFillInstagram": [
+			{
+				"name": "AiFillInstagram",
+				"module": "react-icons/ai",
+				"isDefault": false
+			}
+		],
+		"BiLogoGmail": [
+			{
+				"name": "BiLogoGmail",
+				"module": "react-icons/bi",
+				"isDefault": false
+			}
+		],
+		"App": [
+			{
+				"name": "App",
+				"path": "c:\\Users\\helal\\OneDrive\\Bureau\\JobFinder\\src\\App.tsx",
+				"isDefault": true
+			}
+		],
+		"BrowserRouter as Router": [
+			{
+				"name": "BrowserRouter as Router",
+				"module": "react-router-dom",
+				"isDefault": false
+			}
+		],
+		"Route": [
+			{
+				"name": "Route",
+				"module": "react-router-dom",
+				"isDefault": false
+			}
+		],
+		"Routes": [
+			{
+				"name": "Routes",
+				"module": "react-router-dom",
+				"isDefault": false
+			}
+		]
+	}
+}

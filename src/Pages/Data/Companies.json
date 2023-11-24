@@ -1,0 +1,49 @@
+{
+  "companies": [
+    {
+      "id": "9ff962c1-ccbd-4beb-90a0-a91cb28b0835",
+      "logo": "https://w7.pngwing.com/pngs/67/313/png-transparent-spotify-podcast-spotify-logo-text-logo-music-download-thumbnail.png",
+      "Title": "Spotify"
+    },
+    {
+      "id": "626aa0e5-091b-421b-a447-1d8ea6d80046",
+      "logo": "https://w7.pngwing.com/pngs/746/404/png-transparent-netflix-thumbnail.png",
+      "Title": "Yata"
+    },
+    {
+      "id": "61a7afc9-3dc2-4255-9e48-dc4c4c4f39d5",
+      "logo": "https://w7.pngwing.com/pngs/338/350/png-transparent-daredevil-kingpin-punisher-elektra-television-show-netflix-logo-thumbnail.png",
+      "Title": "Thoughtsphere"
+    },
+    {
+      "id": "c5e225bd-6156-4198-b2e9-511615347b69",
+      "logo": "https://w7.pngwing.com/pngs/968/223/png-transparent-logo-twitch-logos-brands-icon-thumbnail.png",
+      "Title": "Kwideo"
+    },
+    {
+      "id": "81887847-58e5-4b8a-a9a2-0d3c630ff6c5",
+      "logo": "http://dummyimage.com/247x100.png/dddddd/000000",
+      "Title": "Dabtype"
+    },
+    {
+      "id": "2580b89e-3034-43b4-a44c-e2e0843b592d",
+      "logo": "http://dummyimage.com/137x100.png/cc0000/ffffff",
+      "Title": "Layo"
+    },
+    {
+      "id": "7bf6440c-fc69-438d-9590-93b104c322dc",
+      "logo": "http://dummyimage.com/137x100.png/ff4444/ffffff",
+      "Title": "Photobug"
+    },
+    {
+      "id": "60901551-d244-4e93-a571-84aedb71e52b",
+      "logo": "http://dummyimage.com/179x100.png/dddddd/000000",
+      "Title": "Rhynoodle"
+    },
+    {
+      "id": "5431392b-ccee-4f43-982c-8fa9ba04d80f",
+      "logo": "http://dummyimage.com/224x100.png/5fa2dd/ffffff",
+      "Title": "Vipe"
+    }
+  ]
+}

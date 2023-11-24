@@ -1,3 +1,4 @@
+import { BiLock } from "react-icons/bi";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 
@@ -31,14 +32,13 @@ const NavBar = () => {
         <li className="menuList text-[#6f6f6f] hover:text-blueColor">
           <Link to="/blog">Blog</Link>
         </li>
-        {/* The following login and register links will be hidden on "/login" */}
-        <li className="menuList text-[#6f6f6f] hover:text-blueColor">
-          <Link to="/login">Login</Link>
-        </li>
-        <li className="menuList text-[#6f6f6f] hover:text-blueColor">
-          <Link to="/register">Register</Link>
-        </li>
       </ul>
+
+      {/* The following login and register links will be hidden on "/login" */}
+      <button className="bg-blueColor flex  items-center text-white p-3 rounded-lg ">
+        <BiLock className=" icon text-[26px]" />
+        <Link to="/login">Login</Link>
+      </button>
     </nav>
   );
 };

@@ -41,7 +41,7 @@ const RegisterPage = () => {
     reset,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     setValue,
     control,
   } = useForm<IFormInput>({
@@ -51,6 +51,8 @@ const RegisterPage = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
+    localStorage.setItem(uuidv4(), JSON.stringify(data));
+
     reset();
     setCountry("");
     setRegion("");
@@ -188,7 +190,9 @@ const RegisterPage = () => {
 
             <div>
               <input
-                {...register("email")}
+                {...register("email", {
+                  pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                })}
                 type="email"
                 placeholder="Email"
                 className="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
@@ -236,6 +240,7 @@ const RegisterPage = () => {
             </div>
             <div>
               <button
+                disabled={!isValid}
                 type="submit"
                 className="w-full px-6 py-3 rounded-xl bg-blueColor transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
               >
