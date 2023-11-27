@@ -36,7 +36,6 @@ const NavBar = () => {
 
       {/* The following login and register links will be hidden on "/login" */}
       <button className="bg-blueColor flex  items-center text-white p-3 rounded-lg ">
-        <BiLock className=" icon text-[26px]" />
         <Link to="/login">Login</Link>
       </button>
     </nav>

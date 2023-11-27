@@ -1,9 +1,9 @@
+import React from "react";
 import "./App.css";
 import NavBar from "./Component/NavBar/NavBar";
 import AppContext from "./Data/AppContext";
 import jobs from "./Data/Alljobs";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import JobsPage from "./Pages/JobsPage";
 import CompaniesPage from "./Pages/CompaniesPage";
 import AboutPage from "./Pages/AboutPage";
@@ -13,12 +13,20 @@ import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import Home from "./Component/Main/Home";
 
-function App() {
+interface AppContextProps {
+  jobs: any[]; // Replace 'any[]' with the actual type of your 'jobs' data
+}
+
+const App: React.FC = () => {
+  const appContextValue: AppContextProps = {
+    jobs,
+  };
+
   return (
     <div className="m-auto">
       <Router>
         <NavBar />
-        <AppContext.Provider value={{ jobs }}>
+        <AppContext.Provider value={appContextValue}>
           {/* Define your routes here */}
           <Routes>
             <Route path="/" element={<Home />} />
@@ -34,6 +42,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;

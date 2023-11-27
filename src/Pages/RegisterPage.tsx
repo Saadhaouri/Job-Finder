@@ -51,7 +51,6 @@ const RegisterPage = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
-    localStorage.setItem(uuidv4(), JSON.stringify(data));
 
     reset();
     setCountry("");
@@ -103,7 +102,7 @@ const RegisterPage = () => {
               </Link>
             </div>
 
-            <p className="font-medium text-lg text-gray-600">
+            <p className="font-medium text-lg text-gfay-600">
               Create a new account
             </p>
           </div>
@@ -240,7 +239,6 @@ const RegisterPage = () => {
             </div>
             <div>
               <button
-                disabled={!isValid}
                 type="submit"
                 className="w-full px-6 py-3 rounded-xl bg-blueColor transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
               >
