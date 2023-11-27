@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { IoAdd } from "react-icons/io5";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import CompaniesModel from "./Data/Models/CompaniesModel";
 import CompaniesAPI from "./Data/Api/CompaniesApi";
 import { v4 as uuidv4 } from "uuid";
@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AiFillEdit } from "react-icons/ai";
 
-interface IFormcompanies {
+interface IFormCompanies {
   id: string;
   logo: string;
   Title: string;
@@ -24,11 +24,13 @@ const CompaniesPage: React.FC = () => {
   const [companyToDelete, setCompanyToDelete] = useState<string | null>(null);
 
   const [showEditDialog, setShowEditDialog] = useState(false);
-  const [companyToEdit, setCompanyToEdit] = useState<CompaniesModel | null>(
+  const [companyToEdit, setCompanyToEdit] = useState<IFormCompanies | null>(
     null
   );
 
-  const { reset, register, handleSubmit } = useForm<IFormcompanies>({});
+  const { reset, control, register, handleSubmit } = useForm<IFormCompanies>(
+    {}
+  );
 
   useEffect(() => {
     axios
@@ -36,36 +38,47 @@ const CompaniesPage: React.FC = () => {
       .then((response) => setCompanies(response.data));
   }, []);
 
-  const onSubmit = (data: IFormcompanies) => {
+  const onSubmit = async (data: IFormCompanies) => {
     if (companyToEdit) {
       // If editing, update the existing company
       const updatedCompany = new CompaniesModel(
         companyToEdit.id,
-        data.Title,
-        data.logo
+        companyToEdit.Title,
+        companyToEdit.logo
       );
 
-      CompaniesAPI.update(updatedCompany).then(() => {
+      try {
+        await CompaniesAPI.update(updatedCompany);
         toast.success("Company updated successfully!");
         setShowEditDialog(false);
-      });
+      } catch (error) {
+        console.error("Error updating company:", error);
+      }
 
       // Clear the editing state
       setCompanyToEdit(null);
     } else {
       // If creating, add a new company
-      data.id = uuidv4();
-      const newCompany = new CompaniesModel(data.id, data.Title, data.logo);
+      const newCompany = new CompaniesModel(uuidv4(), data.Title, data.logo);
 
-      CompaniesAPI.create(newCompany).then(() => {
+      try {
+        await CompaniesAPI.create(newCompany);
         toast.success("Company added successfully!");
         setShowAddDialog(false);
-      });
+      } catch (error) {
+        console.error("Error creating company:", error);
+      }
     }
 
-    axios
-      .get<CompaniesModel[]>("http://localhost:3000/companies")
-      .then((response) => setCompanies(response.data));
+    // Refresh the list of companies after adding/updating
+    try {
+      const updatedCompanies = await axios.get<CompaniesModel[]>(
+        "http://localhost:3000/companies"
+      );
+      setCompanies(updatedCompanies.data);
+    } catch (error) {
+      console.error("Error fetching companies:", error);
+    }
 
     // Clear the form fields
     reset();
@@ -78,12 +91,16 @@ const CompaniesPage: React.FC = () => {
 
   const handleConfirmDelete = async () => {
     if (companyToDelete) {
-      await CompaniesAPI.delete(companyToDelete);
-      // Refresh the list of companies after deletion
-      const updatedCompanies = await axios.get<CompaniesModel[]>(
-        "http://localhost:3000/companies"
-      );
-      setCompanies(updatedCompanies.data);
+      try {
+        await CompaniesAPI.delete(companyToDelete);
+        // Refresh the list of companies after deletion
+        const updatedCompanies = await axios.get<CompaniesModel[]>(
+          "http://localhost:3000/companies"
+        );
+        setCompanies(updatedCompanies.data);
+      } catch (error) {
+        console.error("Error deleting company:", error);
+      }
 
       // Close the confirmation modal
       setShowDeleteConfirmation(false);
@@ -97,8 +114,7 @@ const CompaniesPage: React.FC = () => {
 
   const handleEditButtonClick = (companyId: string) => {
     const companyToEdit = companies.find((company) => company.id === companyId);
-    setCompanyToEdit(companyToEdit);
-    console.log(companyToEdit);
+    setCompanyToEdit(companyToEdit || null);
     setShowEditDialog(true);
   };
 
@@ -181,7 +197,6 @@ const CompaniesPage: React.FC = () => {
           <div className="bg-white p-10 w-[40%] rounded-lg">
             <form onSubmit={handleSubmit(onSubmit)}>
               <h2 className="text-2xl font-bold mb-4">Edit Company</h2>
-              <p>{companyToEdit?.Title}</p>
               <div className="mb-4">
                 <label
                   htmlFor="title"
@@ -189,21 +204,26 @@ const CompaniesPage: React.FC = () => {
                 >
                   Title
                 </label>
-                <input
-                  type="text"
-                  id="Title"
-                  {...register("Title", { required: "Title is required" })}
-                  placeholder="Title of Company"
-                  className="mt-1 p-2 border rounded-md w-full"
-                  defaultValue={companyToEdit?.Title}
+                <Controller
+                  name="Title"
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      {...field}
+                      type="text"
+                      id="title"
+                      placeholder="Title of Company"
+                      className="mt-1 p-2 border rounded-md w-full"
+                      value={companyToEdit?.Title}
+                      onChange={(e) =>
+                        setCompanyToEdit({
+                          ...companyToEdit,
+                          Title: e.target.value,
+                        })
+                      }
+                    />
+                  )}
                 />
-                {/* <input
-                  type="text"
-                  id="Title"
-                  placeholder="Title of Company"
-                  className="mt-1 p-2 border rounded-md w-full"
-                  value={companyToEdit?.Title}
-                /> */}
               </div>
               <div className="mb-4">
                 <label
@@ -212,13 +232,25 @@ const CompaniesPage: React.FC = () => {
                 >
                   Logo URL
                 </label>
-                <input
-                  type="text"
-                  {...register("logo", { required: "Logo URL is required" })}
-                  placeholder="Url of the logo"
-                  className="mt-1 p-2 border rounded-md w-full"
-                  autoComplete="off"
-                  value={companyToEdit?.logo}
+                <Controller
+                  name="logo"
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      {...field}
+                      type="text"
+                      id="logo"
+                      placeholder="Urlof Company Logo"
+                      className="mt-1 p-2 border rounded-md w-full"
+                      value={companyToEdit?.logo}
+                      onChange={(e) =>
+                        setCompanyToEdit({
+                          ...companyToEdit,
+                          logo: e.target.value,
+                        })
+                      }
+                    />
+                  )}
                 />
               </div>
               <div className="footermodal flex justify-end text-right">
