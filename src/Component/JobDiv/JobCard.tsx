@@ -1,5 +1,6 @@
 import React from "react";
 import { BiTimeFive } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 interface JobCardProps {
   job: {
@@ -14,7 +15,7 @@ interface JobCardProps {
   handlshow: () => void; // Adjust the type of the handler as needed
 }
 
-const JobCard: React.FC<JobCardProps> = ({ job, handlshow }) => {
+const JobCard: React.FC<JobCardProps> = ({ job }) => {
   return (
     <div className="group group/item singleJob w-[250px] p-[20px] bg-white  rounded-[10px] hover:bg-blueColor   shadow-lg shadow-greyIsh-400/700 hover:shadow-lg">
       <span className="flex justify-between items-center gap-4">
@@ -36,12 +37,11 @@ const JobCard: React.FC<JobCardProps> = ({ job, handlshow }) => {
           {job.Companies}
         </span>
       </div>
-      <button
-        onClick={handlshow}
-        className="border-[2px] rounded-[10px] block p-[10px] w-full text-[14px] font-semibold text-textColor hover:bg-white group-hover/item:text-textColor"
-      >
-        Apply Now
-      </button>
+      <Link to="/login">
+        <button className="border-[2px] rounded-[10px] block p-[10px] w-full text-[14px] font-semibold text-textColor hover:bg-white group-hover/item:text-textColor">
+          Apply Now
+        </button>
+      </Link>
     </div>
   );
 };

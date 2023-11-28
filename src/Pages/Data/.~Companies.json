@@ -102,6 +102,11 @@
       "email": "saadhaouri@gmail.com",
       "password": "102030fr",
       "id": "AGMMPHS"
+    },
+    {
+      "email": "john.doe@example.com",
+      "password": "securepassword",
+      "id": "HWBBrPW"
     }
   ]
 }

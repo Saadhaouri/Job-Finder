@@ -1,7 +1,28 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
 
 const LoginPage = () => {
+  const [formData, setFormData] = useState({
+    email: "", // required
+    password: "", // required
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data.user));
+  }
+
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
   return (
     <div className="2xl:container h-screen m-auto">
       <div hidden className="fixed inset-0 w-7/12 lg:block">
@@ -64,12 +85,15 @@ const LoginPage = () => {
             </span>
           </div>
 
-          <form action="" className="space-y-6 py-6">
+          <form onSubmit={(e) => handleSubmit(e)} className="space-y-6 py-6">
             <div>
               <input
                 type="email"
                 placeholder="Your Email"
                 className="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+                value={formData.email}
+                name="email"
+                onChange={(e) => handleChange(e)}
               />
             </div>
 
@@ -78,6 +102,9 @@ const LoginPage = () => {
                 type="password"
                 placeholder="What's the secret word ?"
                 className="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+                value={formData.password}
+                name="password"
+                onChange={(e) => handleChange(e)}
               />
               <button type="reset" className="w-max p-3 -mr-3">
                 <span className="text-sm tracking-wide text-blue-600">

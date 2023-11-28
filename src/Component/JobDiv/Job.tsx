@@ -17,9 +17,7 @@ const Job = () => {
     setCurrentPage(selected);
   };
 
-  const handlshow = () => {
-    console.log("All data" + alljobs.length);
-  };
+  const handlshow = () => {};
   return (
     <div>
       <div className="JobContainer flex gap-10 justify-center flex-wrap items-center py-10">

@@ -5,6 +5,9 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { v4 as uuidv4 } from "uuid";
+import UserModel from "./Data/Models/UserModel";
+import UserAPI from "./Data/Api/UserApi";
+import { toast } from "react-toastify";
 
 interface IFormInput {
   id: string;
@@ -41,7 +44,7 @@ const RegisterPage = () => {
     reset,
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
     setValue,
     control,
   } = useForm<IFormInput>({
@@ -49,12 +52,31 @@ const RegisterPage = () => {
     defaultValues: { id: uuidv4() },
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     console.log(data);
-
-    reset();
-    setCountry("");
-    setRegion("");
+    const newUser = new UserModel(
+      data.id,
+      data.firstname,
+      data.lastname,
+      data.dateofbirth,
+      data.country,
+      data.region,
+      data.email,
+      data.password,
+      data.passwordConfirmation,
+      data.acceptedConditions
+    );
+    try {
+      await UserAPI.create(newUser);
+      toast.success("Account Created successfully!");
+      reset();
+      setValue("country", ""); // Assuming you are using react-hook-form and 'country' is the name of the country field
+      setValue("region", ""); // Assuming you are using react-hook-form and 'region' is the name of the region field
+    } catch (error) {
+      console.error("Error creating account:", error);
+      // Handle error, e.g., show an error toast
+      toast.error("Error creating account");
+    }
   };
 
   // Set default value for 'id' field
