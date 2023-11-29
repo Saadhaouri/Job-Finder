@@ -41,6 +41,7 @@ const CompaniesPage: React.FC = () => {
   const onSubmit = async (data: IFormCompanies) => {
     if (companyToEdit) {
       // If editing, update the existing company
+
       const updatedCompany = new CompaniesModel(
         companyToEdit.id,
         companyToEdit.Title,

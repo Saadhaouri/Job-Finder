@@ -5,7 +5,7 @@ import CompaniesModel from "../Data/Models/CompaniesModel";
 import CompaniesAPI from "../Data/Api/CompaniesApi";
 import { v4 as uuidv4 } from "uuid";
 import { MdDelete } from "react-icons/md";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AiFillEdit } from "react-icons/ai";
 import AddCompany from "./AddCompany";

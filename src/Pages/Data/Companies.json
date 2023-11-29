@@ -103,5 +103,127 @@
       "password": "102030fr",
       "id": "AGMMPHS"
     }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Software Engineer",
+      "category": "IT",
+      "company": "Tech Co"
+    },
+    {
+      "id": 2,
+      "title": "Marketing Specialist",
+      "category": "Marketing",
+      "company": "Marketing Solutions"
+    },
+    {
+      "id": 3,
+      "title": "Financial Analyst",
+      "category": "Finance",
+      "company": "Finance Corp"
+    },
+    {
+      "id": 4,
+      "title": "Mechanical Engineer",
+      "category": "Engineering",
+      "company": "Engineering Innovations"
+    },
+    {
+      "id": 5,
+      "title": "Sales Representative",
+      "category": "Sales",
+      "company": "Sales Ltd"
+    },
+    {
+      "id": 6,
+      "title": "Data Scientist",
+      "category": "IT",
+      "company": "Data Insights"
+    },
+    {
+      "id": 7,
+      "title": "Content Writer",
+      "category": "Marketing",
+      "company": "Content Creators"
+    },
+    {
+      "id": 8,
+      "title": "Accountant",
+      "category": "Finance",
+      "company": "Numbers Inc"
+    },
+    {
+      "id": 9,
+      "title": "Electrical Engineer",
+      "category": "Engineering",
+      "company": "ElectroTech"
+    },
+    {
+      "id": 10,
+      "title": "Customer Support Specialist",
+      "category": "Sales",
+      "company": "Customer Care Solutions"
+    },
+    {
+      "id": 11,
+      "title": "Frontend Developer",
+      "category": "IT",
+      "company": "WebTech Solutions"
+    },
+    {
+      "id": 12,
+      "title": "Graphic Designer",
+      "category": "Marketing",
+      "company": "Design Studio"
+    },
+    {
+      "id": 13,
+      "title": "Investment Analyst",
+      "category": "Finance",
+      "company": "Investment Advisors"
+    },
+    {
+      "id": 14,
+      "title": "Civil Engineer",
+      "category": "Engineering",
+      "company": "Civil Innovations"
+    },
+    {
+      "id": 15,
+      "title": "Account Executive",
+      "category": "Sales",
+      "company": "Sales Excellence"
+    },
+    {
+      "id": 16,
+      "title": "Mobile App Developer",
+      "category": "IT",
+      "company": "AppTech Solutions"
+    },
+    {
+      "id": 17,
+      "title": "Social Media Manager",
+      "category": "Marketing",
+      "company": "Social Media Pros"
+    },
+    {
+      "id": 18,
+      "title": "Financial Planner",
+      "category": "Finance",
+      "company": "Financial Planners Inc"
+    },
+    {
+      "id": 19,
+      "title": "Chemical Engineer",
+      "category": "Engineering",
+      "company": "Chemical Innovations"
+    },
+    {
+      "id": 20,
+      "title": "Business Development Manager",
+      "category": "Sales",
+      "company": "BizDev Solutions"
+    }
   ]
 }
