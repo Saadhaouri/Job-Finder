@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
-import JobModel from "./Data/Models/JobsModel";
+import JobModel from "../Data/Models/JobsModel";
 import axios from "axios";
+import AddJobModal from "./AddJob";
+import CompaniesModel from "../Data/Models/CompaniesModel";
+import jobsAPI from "../Data/Api/JobsApi";
+import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 
 const JobsPage: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -10,6 +15,7 @@ const JobsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const jobsPerPage = 5;
   const [jobs, setJobs] = useState<JobModel[]>([]);
+  const [Companies, setCompanies] = useState([]);
 
   useEffect(() => {
     axios
@@ -29,9 +35,16 @@ const JobsPage: React.FC = () => {
       job.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
+  useEffect(() => {
+    axios
+      .get<CompaniesModel[]>("http://localhost:3000/companies")
+      .then((response) => setCompanies(response.data));
+  }, []);
 
   const categories = ["IT", "Marketing", "Finance", "Engineering", "Sales"];
 
+  const arrayOfCompanies = Companies.map((cm) => cm.Title);
+  console.log(" test ", arrayOfCompanies);
   const handleCategoryClick = (category: string) => {
     setSelectedCategories((prevSelected) =>
       prevSelected.includes(category)
@@ -54,10 +67,36 @@ const JobsPage: React.FC = () => {
     // Redirect to the job update/edit page or display a modal
   };
 
-  const handleAddJob = () => {
-    setAddJobModalOpen(true);
+  const handleAddJobSubmit = async (data: JobModel) => {
+    // Assuming you have a JobsAPI similar to CompaniesAPI
+    const newJob = new JobModel(
+      uuidv4(),
+      data.title,
+      data.category,
+      data.company
+    );
+
+    try {
+      // Replace JobsAPI.create with the actual method for adding a new job
+      await jobsAPI.create(newJob);
+      toast.success("Job added successfully!");
+      setAddJobModalOpen(false);
+    } catch (error) {
+      console.error("Error creating job:", error);
+    }
+
+    try {
+      // Fetch the updated list of jobs after adding a new one
+      const updatedJobs = await axios.get<JobModel[]>(
+        "http://localhost:3000/jobs"
+      );
+      setJobs(updatedJobs.data);
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    }
   };
 
+  //setAddJobModalOpen(false);
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-semibold mb-4 text-blueColor ">
@@ -88,17 +127,16 @@ const JobsPage: React.FC = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="mt-1 p-2 mr-[10px] border rounded-md w-[26rem]"
           />
+          {/* Add Job Button */}
           <button
-            onClick={handleAddJob}
+            onClick={() => setAddJobModalOpen(true)}
             className="bg-green-500 flex items-center justify-between  text-white px-4 py-2 rounded"
           >
             <IoMdAddCircle className="icon text-[26px]" />
             Add Job
           </button>
         </div>
-        {/* Add Job Button */}
       </div>
-
       {/* Job List */}
       <ul>
         {currentJobs.map((job) => (
@@ -122,7 +160,6 @@ const JobsPage: React.FC = () => {
           </li>
         ))}
       </ul>
-
       {/* Pagination */}
       <div className="mt-4">
         {Array.from({
@@ -141,9 +178,14 @@ const JobsPage: React.FC = () => {
           </button>
         ))}
       </div>
-
       {/* Add Job Modal or Page (You can implement this part based on your design) */}
-      {isAddJobModalOpen && <div></div>}
+      <AddJobModal
+        show={isAddJobModalOpen}
+        onClose={() => setAddJobModalOpen(false)}
+        onSubmit={handleAddJobSubmit}
+        categories={["IT", "Marketing", "Finance", "Engineering", "Sales"]} // Replace with your actual categories
+        companies={arrayOfCompanies} // Replace with your actual companies
+      />
     </div>
   );
 };

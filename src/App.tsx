@@ -4,7 +4,7 @@ import NavBar from "./Component/NavBar/NavBar";
 import AppContext from "./Data/AppContext";
 import jobs from "./Data/Alljobs";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import JobsPage from "./Pages/JobsPage";
+import JobsPage from "./Pages//Jobs/JobsPage";
 import { ToastContainer } from "react-toastify";
 import AboutPage from "./Pages/AboutPage";
 import ContactPage from "./Pages/ContactPage";

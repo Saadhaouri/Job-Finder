@@ -1,13 +1,13 @@
 import customAxios from "./axios";
 
 interface Job {
-  id: number;
+  id: string;
   title: string;
   category: string;
   company: string;
 }
 
-const jobsService = {
+const jobsAPI = {
   getAll: async (): Promise<Job[]> => {
     const data = await customAxios.get<Job[]>("/jobs");
     return data.data;
@@ -26,4 +26,4 @@ const jobsService = {
   },
 };
 
-export default jobsService;
+export default jobsAPI;

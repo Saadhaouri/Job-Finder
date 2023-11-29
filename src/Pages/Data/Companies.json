@@ -106,124 +106,136 @@
   ],
   "jobs": [
     {
-      "id": 1,
+      "id": "6b9cfb31-9248-4d53-980f-7f7e86bf7e7a",
       "title": "Software Engineer",
       "category": "IT",
       "company": "Tech Co"
     },
     {
-      "id": 2,
+      "id": "a88b359d-198a-41e5-89f5-69c65e618f37",
       "title": "Marketing Specialist",
       "category": "Marketing",
       "company": "Marketing Solutions"
     },
     {
-      "id": 3,
+      "id": "ef38a7f7-2c0a-4910-b10e-89f3c44a2b7e",
       "title": "Financial Analyst",
       "category": "Finance",
       "company": "Finance Corp"
     },
     {
-      "id": 4,
+      "id": "3e450d4a-e083-40bf-878d-d7a558925ff1",
       "title": "Mechanical Engineer",
       "category": "Engineering",
       "company": "Engineering Innovations"
     },
     {
-      "id": 5,
+      "id": "cfda27ab-e13a-4d1b-831d-0fb13e297a14",
       "title": "Sales Representative",
       "category": "Sales",
       "company": "Sales Ltd"
     },
     {
-      "id": 6,
+      "id": "fa9b590d-23c4-48a9-99e0-d129f79ab442",
       "title": "Data Scientist",
       "category": "IT",
       "company": "Data Insights"
     },
     {
-      "id": 7,
+      "id": "d491a73f-0e47-42d0-9e09-5f20572b0f11",
       "title": "Content Writer",
       "category": "Marketing",
       "company": "Content Creators"
     },
     {
-      "id": 8,
+      "id": "e056fe22-6d84-47c2-9f71-9502e74e6e4e",
       "title": "Accountant",
       "category": "Finance",
       "company": "Numbers Inc"
     },
     {
-      "id": 9,
+      "id": "796b8a67-70a2-4d7e-a62e-4f498d8893f7",
       "title": "Electrical Engineer",
       "category": "Engineering",
       "company": "ElectroTech"
     },
     {
-      "id": 10,
+      "id": "f077fc67-27b7-404b-9977-0f4d0e98b9bf",
       "title": "Customer Support Specialist",
       "category": "Sales",
       "company": "Customer Care Solutions"
     },
     {
-      "id": 11,
+      "id": "55095150-93eb-4c42-b1a1-c1b83d3002c3",
       "title": "Frontend Developer",
       "category": "IT",
       "company": "WebTech Solutions"
     },
     {
-      "id": 12,
+      "id": "d54d4db1-7849-4774-9bae-565d6f79dbde",
       "title": "Graphic Designer",
       "category": "Marketing",
       "company": "Design Studio"
     },
     {
-      "id": 13,
+      "id": "9265d6eb-4c9a-47b9-80a7-e029cbf49d22",
       "title": "Investment Analyst",
       "category": "Finance",
       "company": "Investment Advisors"
     },
     {
-      "id": 14,
+      "id": "68f567c7-86ac-4eae-bf6e-18614cf1832b",
       "title": "Civil Engineer",
       "category": "Engineering",
       "company": "Civil Innovations"
     },
     {
-      "id": 15,
+      "id": "2db5979e-8f7c-4a06-b9b7-4078724b384a",
       "title": "Account Executive",
       "category": "Sales",
       "company": "Sales Excellence"
     },
     {
-      "id": 16,
+      "id": "e96bcf47-6b45-4ee1-9c1d-ebdf20b2871e",
       "title": "Mobile App Developer",
       "category": "IT",
       "company": "AppTech Solutions"
     },
     {
-      "id": 17,
+      "id": "aa2a6ebd-5469-48f3-8f03-e06e1f4e7cc1",
       "title": "Social Media Manager",
       "category": "Marketing",
       "company": "Social Media Pros"
     },
     {
-      "id": 18,
+      "id": "1f6655c4-cd5c-4b1d-a719-1581b7a58c3d",
       "title": "Financial Planner",
       "category": "Finance",
       "company": "Financial Planners Inc"
     },
     {
-      "id": 19,
+      "id": "55b065dd-99a2-4e9a-a70f-653498b50487",
       "title": "Chemical Engineer",
       "category": "Engineering",
       "company": "Chemical Innovations"
     },
     {
-      "id": 20,
+      "id": "3d44b6b5-2329-4f4a-b4e4-d5a6d9a1e5b0",
       "title": "Business Development Manager",
       "category": "Sales",
       "company": "BizDev Solutions"
+    },
+    {
+      "id": "1e04cc72-7bd9-45e3-826d-c63a9b5b0362",
+      "title": "UI UX Designer",
+      "category": "IT",
+      "company": "Toastify "
+    },
+    {
+      "id": "3f9ed932-e04a-4615-a052-ec006c2c3369",
+      "title": "React Developper ",
+      "category": "IT",
+      "company": "SQL"
     }
   ]
 }
