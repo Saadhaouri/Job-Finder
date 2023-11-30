@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+// JobsPage.tsx
+import React, { useEffect, useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
 import JobModel from "../Data/Models/JobsModel";
 import axios from "axios";
@@ -7,6 +8,7 @@ import CompaniesModel from "../Data/Models/CompaniesModel";
 import jobsAPI from "../Data/Api/JobsApi";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import DeleteJobModal from "./DeleteJobModal";
 
 const JobsPage: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -16,6 +18,8 @@ const JobsPage: React.FC = () => {
   const jobsPerPage = 5;
   const [jobs, setJobs] = useState<JobModel[]>([]);
   const [Companies, setCompanies] = useState([]);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [selectedJobId, setSelectedJobId] = useState<number | null>(null);
 
   useEffect(() => {
     axios
@@ -35,6 +39,7 @@ const JobsPage: React.FC = () => {
       job.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
+
   useEffect(() => {
     axios
       .get<CompaniesModel[]>("http://localhost:3000/companies")
@@ -44,7 +49,7 @@ const JobsPage: React.FC = () => {
   const categories = ["IT", "Marketing", "Finance", "Engineering", "Sales"];
 
   const arrayOfCompanies = Companies.map((cm) => cm.Title);
-  console.log(" test ", arrayOfCompanies);
+
   const handleCategoryClick = (category: string) => {
     setSelectedCategories((prevSelected) =>
       prevSelected.includes(category)
@@ -53,22 +58,43 @@ const JobsPage: React.FC = () => {
     );
   };
 
+  const handleDeleteJob = (jobId: number) => {
+    setSelectedJobId(jobId);
+    setDeleteModalOpen(true);
+  };
+
+  const handleCancelDelete = () => {
+    setSelectedJobId(null);
+    setDeleteModalOpen(false);
+  };
+
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
-  const handleDeleteJob = (jobId: number) => {
-    // Implement logic to delete the job with the given jobId
-    // Update the jobs list accordingly
-  };
+  const handleConfirmDeleteJob = async () => {
+    if (selectedJobId) {
+      try {
+        await jobsAPI.delete(selectedJobId);
 
-  const handleUpdateJob = (jobId: number) => {
-    // Implement logic to update the job with the given jobId
-    // Redirect to the job update/edit page or display a modal
-  };
+        const updatedJobs = await axios.get<JobModel[]>(
+          "http://localhost:3000/jobs"
+        );
+        setJobs(updatedJobs.data);
 
+        toast.success("Job deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting job:", error);
+      }
+
+      setSelectedJobId(null);
+      setDeleteModalOpen(false);
+    }
+  };
+  const handleUpdateJob = (jobId: string) => {
+    console.log(jobId);
+  };
   const handleAddJobSubmit = async (data: JobModel) => {
-    // Assuming you have a JobsAPI similar to CompaniesAPI
     const newJob = new JobModel(
       uuidv4(),
       data.title,
@@ -77,7 +103,6 @@ const JobsPage: React.FC = () => {
     );
 
     try {
-      // Replace JobsAPI.create with the actual method for adding a new job
       await jobsAPI.create(newJob);
       toast.success("Job added successfully!");
       setAddJobModalOpen(false);
@@ -86,7 +111,6 @@ const JobsPage: React.FC = () => {
     }
 
     try {
-      // Fetch the updated list of jobs after adding a new one
       const updatedJobs = await axios.get<JobModel[]>(
         "http://localhost:3000/jobs"
       );
@@ -96,14 +120,12 @@ const JobsPage: React.FC = () => {
     }
   };
 
-  //setAddJobModalOpen(false);
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-semibold mb-4 text-blueColor ">
         Jobs Management
       </h1>
-      {/* Category Buttons */}
-      <div className=" flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4">
         <div className="space-x-2">
           {categories.map((category) => (
             <button
@@ -127,7 +149,6 @@ const JobsPage: React.FC = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="mt-1 p-2 mr-[10px] border rounded-md w-[26rem]"
           />
-          {/* Add Job Button */}
           <button
             onClick={() => setAddJobModalOpen(true)}
             className="bg-green-500 flex items-center justify-between  text-white px-4 py-2 rounded"
@@ -137,7 +158,6 @@ const JobsPage: React.FC = () => {
           </button>
         </div>
       </div>
-      {/* Job List */}
       <ul>
         {currentJobs.map((job) => (
           <li key={job.id} className="mb-4 border p-4 rounded">
@@ -149,7 +169,7 @@ const JobsPage: React.FC = () => {
                 className="bg-green-500 text-white px-2 py-1 rounded"
               >
                 Update
-              </button>
+              </button>{" "}
               <button
                 onClick={() => handleDeleteJob(job.id)}
                 className="bg-red-500 text-white px-2 py-1 rounded"
@@ -160,7 +180,6 @@ const JobsPage: React.FC = () => {
           </li>
         ))}
       </ul>
-      {/* Pagination */}
       <div className="mt-4">
         {Array.from({
           length: Math.ceil(filteredJobs.length / jobsPerPage),
@@ -178,13 +197,17 @@ const JobsPage: React.FC = () => {
           </button>
         ))}
       </div>
-      {/* Add Job Modal or Page (You can implement this part based on your design) */}
       <AddJobModal
         show={isAddJobModalOpen}
         onClose={() => setAddJobModalOpen(false)}
         onSubmit={handleAddJobSubmit}
-        categories={["IT", "Marketing", "Finance", "Engineering", "Sales"]} // Replace with your actual categories
-        companies={arrayOfCompanies} // Replace with your actual companies
+        categories={["IT", "Marketing", "Finance", "Engineering", "Sales"]}
+        companies={arrayOfCompanies}
+      />
+      <DeleteJobModal
+        show={isDeleteModalOpen}
+        onClose={handleCancelDelete}
+        onConfirm={handleConfirmDeleteJob}
       />
     </div>
   );

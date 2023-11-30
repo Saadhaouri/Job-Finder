@@ -160,12 +160,6 @@
       "company": "ElectroTech"
     },
     {
-      "id": "f077fc67-27b7-404b-9977-0f4d0e98b9bf",
-      "title": "Customer Support Specialist",
-      "category": "Sales",
-      "company": "Customer Care Solutions"
-    },
-    {
       "id": "55095150-93eb-4c42-b1a1-c1b83d3002c3",
       "title": "Frontend Developer",
       "category": "IT",
@@ -234,6 +228,12 @@
     {
       "id": "3f9ed932-e04a-4615-a052-ec006c2c3369",
       "title": "React Developper ",
+      "category": "IT",
+      "company": "SQL"
+    },
+    {
+      "id": "4134fd02-160c-4383-be0c-169dc18cb6bd",
+      "title": "Rise Space",
       "category": "IT",
       "company": "SQL"
     }
