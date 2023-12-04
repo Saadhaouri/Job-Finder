@@ -1,6 +1,6 @@
 const Value = () => {
   return (
-    <div className="mb-[4rem] mt-[6rem] m-10 p-20">
+    <div className="mb-[4rem] mt-[2rem] m-10 p-20">
       <h1 className="text-[25px] py-[2rem] pb-[3rem] font-poppins font-bold w-[400px]">
         The value that hlds us true and to accoount
       </h1>

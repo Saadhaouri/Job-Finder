@@ -36,6 +36,10 @@ const Company: React.FC = () => {
       .then((response) => setCompanies(response.data));
   }, []);
 
+  const OpenModalAdd = () => {
+    setShowAddDialog(true);
+  };
+
   const onSubmit = async (data: IFormCompanies) => {
     if (companyToEdit) {
       const updatedCompany = new CompaniesModel(
@@ -115,11 +119,11 @@ const Company: React.FC = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="p-3.5 border border-gray-300 rounded-md mr-2"
             />
-            <button className=" bg-blueColor flex items-center text-white p-3 rounded-lg cursor-pointer">
-              <IoAdd
-                className="text-[32px]"
-                onClick={() => setShowAddDialog(true)}
-              />
+            <button
+              onClick={OpenModalAdd}
+              className=" bg-blueColor flex items-center text-white p-3 rounded-lg cursor-pointer"
+            >
+              <IoAdd className="text-[32px]" />
               New Company
             </button>
           </div>
@@ -129,6 +133,7 @@ const Company: React.FC = () => {
           onClose={() => setShowAddDialog(false)}
           onSubmit={onSubmit}
         />
+
         <UpdateCompany
           show={showEditDialog}
           onClose={() => setShowEditDialog(false)}

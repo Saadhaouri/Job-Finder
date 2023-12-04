@@ -9,6 +9,14 @@ import jobsAPI from "../Data/Api/JobsApi";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 import DeleteJobModal from "./DeleteJobModal";
+import UpdateJobModal from "./UpdateModal";
+
+interface IFormJobs {
+  id: string;
+  title: string;
+  category: string;
+  company: string;
+}
 
 const JobsPage: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -20,6 +28,16 @@ const JobsPage: React.FC = () => {
   const [Companies, setCompanies] = useState([]);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedJobId, setSelectedJobId] = useState<number | null>(null);
+  const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
+  const [selectedJobToEdit, setSelectedJobToEdit] = useState<JobModel | null>(
+    null
+  );
+
+  const handleUpdateJob = (jobId: number) => {
+    const jobToEdit = jobs.find((job) => job.id === jobId);
+    setSelectedJobToEdit(jobToEdit || null);
+    setUpdateModalOpen(true);
+  };
 
   useEffect(() => {
     axios
@@ -91,9 +109,7 @@ const JobsPage: React.FC = () => {
       setDeleteModalOpen(false);
     }
   };
-  const handleUpdateJob = (jobId: string) => {
-    console.log(jobId);
-  };
+
   const handleAddJobSubmit = async (data: JobModel) => {
     const newJob = new JobModel(
       uuidv4(),
@@ -108,6 +124,51 @@ const JobsPage: React.FC = () => {
       setAddJobModalOpen(false);
     } catch (error) {
       console.error("Error creating job:", error);
+    }
+
+    try {
+      const updatedJobs = await axios.get<JobModel[]>(
+        "http://localhost:3000/jobs"
+      );
+      setJobs(updatedJobs.data);
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    }
+  };
+
+  const handleUpdateJobSubmit = async (data: IFormJobs) => {
+    if (selectedJobToEdit) {
+      const updatedJob = new JobModel(
+        selectedJobToEdit.id,
+        data.title,
+        data.category,
+        data.company
+      );
+
+      try {
+        await jobsAPI.update(updatedJob);
+        toast.success("Job updated successfully!");
+        setUpdateModalOpen(false);
+      } catch (error) {
+        console.error("Error updating job:", error);
+      }
+
+      setSelectedJobToEdit(null);
+    } else {
+      const newJob = new JobModel(
+        uuidv4(),
+        data.title,
+        data.category,
+        data.company
+      );
+
+      try {
+        await jobsAPI.create(newJob);
+        toast.success("Job added successfully!");
+        setUpdateModalOpen(false);
+      } catch (error) {
+        console.error("Error creating job:", error);
+      }
     }
 
     try {
@@ -163,6 +224,7 @@ const JobsPage: React.FC = () => {
           <li key={job.id} className="mb-4 border p-4 rounded">
             <h2 className="text-xl font-semibold">{job.title}</h2>
             <p className="text-gray-600">Category: {job.category}</p>
+            <p className="text-gray-600">Company : {job.company}</p>
             <div className="mt-2 space-x-2">
               <button
                 onClick={() => handleUpdateJob(job.id)}
@@ -208,6 +270,14 @@ const JobsPage: React.FC = () => {
         show={isDeleteModalOpen}
         onClose={handleCancelDelete}
         onConfirm={handleConfirmDeleteJob}
+      />
+      <UpdateJobModal
+        show={isUpdateModalOpen}
+        onClose={() => setUpdateModalOpen(false)}
+        onSubmit={handleUpdateJobSubmit}
+        jobToEdit={selectedJobToEdit}
+        companies={arrayOfCompanies}
+        categories={categories} // Add companies as a prop
       />
     </div>
   );

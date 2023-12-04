@@ -102,6 +102,18 @@
       "email": "saadhaouri@gmail.com",
       "password": "102030fr",
       "id": "AGMMPHS"
+    },
+    {
+      "id": "6dfd5640-cf73-4e89-855d-1453e571a194",
+      "firstname": "ffrfr",
+      "lastname": "frf",
+      "dateofbirth": "2023-12-04T23:00:00.000Z",
+      "country": "Australia",
+      "region": "South Australia",
+      "email": "saadhaouri@gmail.com",
+      "password": "Houssa;1234-",
+      "passwordConfirmation": "Houssa;1234-",
+      "acceptedConditions": true
     }
   ],
   "jobs": [
@@ -109,55 +121,49 @@
       "id": "6b9cfb31-9248-4d53-980f-7f7e86bf7e7a",
       "title": "Software Engineer",
       "category": "IT",
-      "company": "Tech Co"
+      "company": "Ps5"
     },
     {
       "id": "a88b359d-198a-41e5-89f5-69c65e618f37",
       "title": "Marketing Specialist",
       "category": "Marketing",
-      "company": "Marketing Solutions"
+      "company": "Terabyte"
     },
     {
       "id": "ef38a7f7-2c0a-4910-b10e-89f3c44a2b7e",
       "title": "Financial Analyst",
       "category": "Finance",
-      "company": "Finance Corp"
+      "company": "Premier Ligue"
     },
     {
       "id": "3e450d4a-e083-40bf-878d-d7a558925ff1",
       "title": "Mechanical Engineer",
       "category": "Engineering",
-      "company": "Engineering Innovations"
+      "company": "Spotify"
     },
     {
       "id": "cfda27ab-e13a-4d1b-831d-0fb13e297a14",
       "title": "Sales Representative",
       "category": "Sales",
-      "company": "Sales Ltd"
-    },
-    {
-      "id": "fa9b590d-23c4-48a9-99e0-d129f79ab442",
-      "title": "Data Scientist",
-      "category": "IT",
-      "company": "Data Insights"
+      "company": "Ps5"
     },
     {
       "id": "d491a73f-0e47-42d0-9e09-5f20572b0f11",
       "title": "Content Writer",
       "category": "Marketing",
-      "company": "Content Creators"
+      "company": "Spotify"
     },
     {
       "id": "e056fe22-6d84-47c2-9f71-9502e74e6e4e",
       "title": "Accountant",
-      "category": "Finance",
-      "company": "Numbers Inc"
+      "category": "Sales",
+      "company": "Apple"
     },
     {
       "id": "796b8a67-70a2-4d7e-a62e-4f498d8893f7",
       "title": "Electrical Engineer",
       "category": "Engineering",
-      "company": "ElectroTech"
+      "company": "Toastify"
     },
     {
       "id": "55095150-93eb-4c42-b1a1-c1b83d3002c3",
@@ -169,43 +175,43 @@
       "id": "d54d4db1-7849-4774-9bae-565d6f79dbde",
       "title": "Graphic Designer",
       "category": "Marketing",
-      "company": "Design Studio"
+      "company": "Twitch"
     },
     {
       "id": "9265d6eb-4c9a-47b9-80a7-e029cbf49d22",
       "title": "Investment Analyst",
       "category": "Finance",
-      "company": "Investment Advisors"
+      "company": "Konami"
     },
     {
       "id": "68f567c7-86ac-4eae-bf6e-18614cf1832b",
       "title": "Civil Engineer",
       "category": "Engineering",
-      "company": "Civil Innovations"
+      "company": "Apple"
     },
     {
       "id": "2db5979e-8f7c-4a06-b9b7-4078724b384a",
       "title": "Account Executive",
       "category": "Sales",
-      "company": "Sales Excellence"
+      "company": "Konami"
     },
     {
       "id": "e96bcf47-6b45-4ee1-9c1d-ebdf20b2871e",
       "title": "Mobile App Developer",
       "category": "IT",
-      "company": "AppTech Solutions"
+      "company": "Apple"
     },
     {
       "id": "aa2a6ebd-5469-48f3-8f03-e06e1f4e7cc1",
       "title": "Social Media Manager",
       "category": "Marketing",
-      "company": "Social Media Pros"
+      "company": "Twitch"
     },
     {
       "id": "1f6655c4-cd5c-4b1d-a719-1581b7a58c3d",
       "title": "Financial Planner",
       "category": "Finance",
-      "company": "Financial Planners Inc"
+      "company": "Twitch"
     },
     {
       "id": "55b065dd-99a2-4e9a-a70f-653498b50487",
@@ -217,7 +223,7 @@
       "id": "3d44b6b5-2329-4f4a-b4e4-d5a6d9a1e5b0",
       "title": "Business Development Manager",
       "category": "Sales",
-      "company": "BizDev Solutions"
+      "company": "Twitch"
     },
     {
       "id": "1e04cc72-7bd9-45e3-826d-c63a9b5b0362",
@@ -236,6 +242,30 @@
       "title": "Rise Space",
       "category": "IT",
       "company": "SQL"
+    },
+    {
+      "id": "399daba0-80bc-470e-9218-e385066ac2c1",
+      "title": "Developer",
+      "category": "Marketing",
+      "company": "Terabyte"
+    },
+    {
+      "id": "463f7121-c8c8-4904-9f87-342eab193509",
+      "title": "Web developer ",
+      "category": "IT",
+      "company": "Konami"
+    },
+    {
+      "id": "2176a0e3-f5a0-4e45-9508-c7a0997d0caa",
+      "title": "Web developert",
+      "category": "Marketing",
+      "company": "Ps5"
+    },
+    {
+      "id": "0e4d9a9c-ee19-4719-884a-69a3221678c5",
+      "title": "ijk",
+      "category": "Finance",
+      "company": "Toastify "
     }
   ]
 }

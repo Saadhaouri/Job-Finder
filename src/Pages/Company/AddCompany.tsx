@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import CompaniesModel from "../Data/Models/CompaniesModel";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface AddCompanyModalProps {
@@ -73,7 +72,6 @@ const AddCompany: React.FC<AddCompanyModalProps> = ({
           </div>
         </div>
       )}
-      <ToastContainer />
     </>
   );
 };
