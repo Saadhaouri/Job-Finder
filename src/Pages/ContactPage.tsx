@@ -1,7 +1,46 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaX } from "react-icons/fa6";
 import Footer from "../Component/FooterDiv/Footer";
 import contactus from "../assets/contactus.png";
+import { useForm, SubmitHandler } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
+
+interface FormEmailer {
+  name: string;
+  email: string;
+  message: string;
+}
 const ContactPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormEmailer>();
+
+  const onSubmit: SubmitHandler<FormEmailer> = async (data) => {
+    console.log(data);
+    try {
+      await emailjs.send(
+        "service_pgoqlfl",
+        "template_aur2jov",
+        {
+          to_email: "saadhaouri@gmail.com", // Replace with your email
+          from_name: data.name,
+          from_email: data.email,
+          message: data.message,
+        },
+        "7GO8J5jnmGWpCutrY" // Replace with your EmailJS user_id
+      );
+      console.log("test message");
+      console.log(data.message);
+      toast.success("Email sent successfully");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast.error("Failed to send email");
+    }
+    reset();
+  };
   return (
     <div className="contact">
       <h2 className="text-[52px]  text-center font-bold text-blueColor ">
@@ -16,7 +55,7 @@ const ContactPage = () => {
           <h2 className="text-3xl text-center font-bold mb-6">
             Contact the support
           </h2>
-          <form className="space-y-4 ">
+          <form className="space-y-4 " onSubmit={handleSubmit(onSubmit)}>
             <div className="">
               <label
                 htmlFor="name"
@@ -27,9 +66,9 @@ const ContactPage = () => {
               <input
                 type="text"
                 id="name"
-                name="name"
                 className="w-full py-3 px-4 border border-gray-300 rounded placeholder-gray-600 focus:outline-none focus:border-blueColor"
                 placeholder="Your Name"
+                {...register("name", { required: true, maxLength: 20 })}
               />
 
               <label
@@ -40,10 +79,9 @@ const ContactPage = () => {
               </label>
               <input
                 type="email"
-                id="email"
-                name="email"
                 className="w-full py-3 px-4 border border-gray-300 rounded placeholder-gray-600 focus:outline-none focus:border-blueColor"
                 placeholder="Your Email"
+                {...register("email", { required: true })}
               />
             </div>
 
@@ -56,11 +94,12 @@ const ContactPage = () => {
               </label>
               <textarea
                 id="message"
-                name="message"
+                {...register("message", { required: true })}
                 rows="4"
                 className="w-full py-3 px-4 border border-gray-300 rounded placeholder-gray-600 focus:outline-none focus:border-blueColor"
                 placeholder="Your Message"
               ></textarea>
+              <p>{errors.message}</p>
             </div>
 
             <button
