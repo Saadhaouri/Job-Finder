@@ -2,9 +2,12 @@ import customAxios from "./axios";
 
 interface Job {
   id: string;
-  title: string;
-  category: string;
-  company: string;
+  JobTitle: string;
+  time: string;
+  Country: string;
+  Description: string;
+  Logo: string;
+  Companies: string;
 }
 
 const jobsAPI = {
@@ -20,7 +23,7 @@ const jobsAPI = {
     const data = await customAxios.put(`/jobs/${job.id}`, job);
     console.log(data);
   },
-  delete: async (jobId: number): Promise<void> => {
+  delete: async (jobId: string): Promise<void> => {
     const data = await customAxios.delete(`/jobs/${jobId}`);
     console.log(data);
   },

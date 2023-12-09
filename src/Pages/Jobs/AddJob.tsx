@@ -1,15 +1,18 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import JobModel from "../Data/Models/JobsModel";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { CountryDropdown } from "react-country-region-selector";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface AddJobModalProps {
   show: boolean;
   onClose: () => void;
-  onSubmit: (data: JobModel) => Promise<void>;
-  categories: string[]; // Add categories as a prop
-  companies: string[]; // Add companies as a prop
+  onSubmit: SubmitHandler<JobModel>;
+  categories: string[];
+  companies: string[];
+  setCountry: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AddJobModal: React.FC<AddJobModalProps> = ({
@@ -18,8 +21,16 @@ const AddJobModal: React.FC<AddJobModalProps> = ({
   onSubmit,
   categories,
   companies,
+  setCountry,
 }) => {
-  const { reset, register, handleSubmit } = useForm<JobModel>();
+  const { register, handleSubmit, control, setValue } = useForm<JobModel>({
+    resolver: yupResolver(NewJob),
+  });
+
+  const selectCountry = (val: string) => {
+    setCountry(val);
+    setValue("Country", val);
+  };
 
   return (
     <>
@@ -38,7 +49,7 @@ const AddJobModal: React.FC<AddJobModalProps> = ({
                 <input
                   type="text"
                   id="title"
-                  {...register("title", { required: "Title is required" })}
+                  {...register("JobTitle", { required: "Title is required" })}
                   placeholder="Title of Job"
                   className="mt-1 p-2 border rounded-md w-full"
                 />
@@ -57,7 +68,7 @@ const AddJobModal: React.FC<AddJobModalProps> = ({
                   })}
                   className="mt-1 p-2 border rounded-md w-full"
                 >
-                  <option value="" disabled selected>
+                  <option value="" defaultValue>
                     Select Category
                   </option>
                   {categories.map((category) => (
@@ -67,19 +78,43 @@ const AddJobModal: React.FC<AddJobModalProps> = ({
                   ))}
                 </select>
               </div>
+              <div>
+                <label
+                  htmlFor="company"
+                  className="block text-sm font-medium mt-4 text-gray-700"
+                >
+                  Country
+                </label>
+                <Controller
+                  control={control}
+                  name="Country"
+                  render={({ field }) => (
+                    <CountryDropdown
+                      value={field.value}
+                      onChange={(val) => {
+                        selectCountry(val);
+                        field.onChange(val);
+                      }}
+                      onBlur={field.onBlur}
+                      className="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+                    />
+                  )}
+                />
+              </div>
               <div className="mb-4">
                 <label
                   htmlFor="company"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm mt-4 font-medium text-gray-700"
                 >
                   Company
                 </label>
                 <select
-                  id="company"
-                  {...register("company", { required: "Company is required" })}
+                  {...register("Companies", {
+                    required: "Company is required",
+                  })}
                   className="mt-1 p-2 border rounded-md w-full"
                 >
-                  <option value="" disabled selected>
+                  <option value="" defaultValue>
                     Select Company
                   </option>
                   {companies.map((company) => (
@@ -89,6 +124,39 @@ const AddJobModal: React.FC<AddJobModalProps> = ({
                   ))}
                 </select>
               </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="description"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Description
+                </label>
+                <textarea
+                  {...register("Description", {
+                    required: "Description is required",
+                  })}
+                  placeholder="Description of the job"
+                  className="mt-1 p-2 border rounded-md w-full"
+                />
+              </div>
+
+              {/* Removed Logo input field as per your requirement */}
+
+              <div className="mb-4">
+                <label
+                  htmlFor="time"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Time
+                </label>
+                <input
+                  type="date"
+                  {...register("time", { required: "Time is required" })}
+                  placeholder="Time of the job"
+                  className="mt-1 p-2 border rounded-md w-full"
+                />
+              </div>
+
               <div className="footermodal flex justify-end text-right">
                 <button
                   type="submit"

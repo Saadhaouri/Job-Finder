@@ -6,12 +6,28 @@ const NavBar = () => {
   const location = useLocation();
   if (location.pathname === "/login" || location.pathname === "/register")
     return null; // Return null to hide the navbar
+  if (location.pathname === "/*")
+    return (
+      <nav className="navBar flex justify-between items-center p-[3rem]">
+        <div className="logoDiv">
+          <Link to="/">
+            {" "}
+            <h1 className="logo text-[25px] text-blueColor cursor-pointer ">
+              <strong>Job</strong>Finder{" "}
+            </h1>{" "}
+          </Link>
+        </div>
+      </nav>
+    );
   return (
     <nav className="navBar flex justify-between items-center p-[3rem]">
       <div className="logoDiv">
-        <h1 className="logo text-[25px] text-blueColor ">
-          <strong>Job</strong>Finder
-        </h1>
+        <Link to="/">
+          {" "}
+          <h1 className="logo text-[25px] text-blueColor cursor-pointer ">
+            <strong>Job</strong>Finder{" "}
+          </h1>{" "}
+        </Link>
       </div>
       <ul className="menu flex gap-8">
         <li className="menuList text-[#6f6f6f] hover:text-blueColor">

@@ -17,7 +17,7 @@
     },
     {
       "id": "37ddd0b9-170d-44fb-9420-038fb7165ba4",
-      "Title": "Tests",
+      "Title": "God Of Ware",
       "logo": "https://w7.pngwing.com/pngs/709/55/png-transparent-rugal-bernstein-concept-art-the-king-of-fighters-kof-computer-wallpaper-video-game-fictional-character-thumbnail.png"
     },
     {
@@ -59,6 +59,11 @@
       "id": "4802441d-9351-4f1b-b37a-be84cce03f26",
       "Title": "Terabyte",
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh3uJRFMvEikbfEoo1ESDV1wHU3xLcQnQgpxBxe11plG2y5m_CBuEeY0u-DV8fb738h80&usqp=CAU"
+    },
+    {
+      "id": "e4184f6d-2263-489e-97cf-b5e6f2d2c943",
+      "Title": "Microsoft",
+      "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAM1BMVEXzUyWBvAYFpvD/ugj////yQQD+8vD1+e53twDu+P7/+e4An+//tQDxLABssgAAme7/sABcDky9AAABF0lEQVR4nO3P2xGCQBQFwasuDwHF/KP1y4IITrnak8BUV8UaxvZpmi+xckBCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkLCLxQOsR4n4XOOVWOudjTlqvbrEfYfYf8R9h9h/9U912m75Ko11n4Ql9cWq66x1pNwu8UiJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQk/GfhGwKhfkbgoCwTAAAAAElFTkSuQmCC"
     }
   ],
   "users": [
@@ -118,160 +123,40 @@
   ],
   "jobs": [
     {
-      "id": "6b9cfb31-9248-4d53-980f-7f7e86bf7e7a",
-      "title": "Software Engineer",
-      "category": "IT",
-      "company": "Ps5"
+      "id": "bb18ca26-cf2a-41c5-b4c6-8c82e0275057",
+      "JobTitle": "Développeur web",
+      "time": "2024-12-12",
+      "Country": "Morocco",
+      "Description": "Domaine : Marketing / Communication / Publicité / Rp\nFonction : Informatique - Développement\nContrat : A discuter\nEntreprise : REVOLUT MEDIA\nSalaire : A discuter\nNiveau d'études : Bac plus 2",
+      "Companies": "Terabyte",
+      "category": "IT"
     },
     {
-      "id": "a88b359d-198a-41e5-89f5-69c65e618f37",
-      "title": "Marketing Specialist",
-      "category": "Marketing",
-      "company": "Terabyte"
+      "id": "c2a059dd-8adc-4282-a74c-93c5b8d3df00",
+      "JobTitle": "React developper",
+      "time": "2023-12-15",
+      "Country": "Morocco",
+      "Description": "Frontend Developper  \nskilss \nhtml5 / Css3 / Js \nReact - Json Server",
+      "Companies": "Konami",
+      "category": "Finance"
     },
     {
-      "id": "ef38a7f7-2c0a-4910-b10e-89f3c44a2b7e",
-      "title": "Financial Analyst",
-      "category": "Finance",
-      "company": "Premier Ligue"
+      "id": "8b46d8df-56f8-4b45-a793-7a791a3a7664",
+      "JobTitle": "Data Analys",
+      "time": "2024-02-02",
+      "Country": "France",
+      "Description": "Develop and implement user interfaces for web applications using React.js.",
+      "Companies": "InteX",
+      "category": "IT"
     },
     {
-      "id": "3e450d4a-e083-40bf-878d-d7a558925ff1",
-      "title": "Mechanical Engineer",
-      "category": "Engineering",
-      "company": "Spotify"
-    },
-    {
-      "id": "cfda27ab-e13a-4d1b-831d-0fb13e297a14",
-      "title": "Sales Representative",
-      "category": "Sales",
-      "company": "Ps5"
-    },
-    {
-      "id": "d491a73f-0e47-42d0-9e09-5f20572b0f11",
-      "title": "Content Writer",
-      "category": "Marketing",
-      "company": "Spotify"
-    },
-    {
-      "id": "e056fe22-6d84-47c2-9f71-9502e74e6e4e",
-      "title": "Accountant",
-      "category": "Sales",
-      "company": "Apple"
-    },
-    {
-      "id": "796b8a67-70a2-4d7e-a62e-4f498d8893f7",
-      "title": "Electrical Engineer",
-      "category": "Engineering",
-      "company": "Toastify"
-    },
-    {
-      "id": "55095150-93eb-4c42-b1a1-c1b83d3002c3",
-      "title": "Frontend Developer",
-      "category": "IT",
-      "company": "WebTech Solutions"
-    },
-    {
-      "id": "d54d4db1-7849-4774-9bae-565d6f79dbde",
-      "title": "Graphic Designer",
-      "category": "Marketing",
-      "company": "Twitch"
-    },
-    {
-      "id": "9265d6eb-4c9a-47b9-80a7-e029cbf49d22",
-      "title": "Investment Analyst",
-      "category": "Finance",
-      "company": "Konami"
-    },
-    {
-      "id": "68f567c7-86ac-4eae-bf6e-18614cf1832b",
-      "title": "Civil Engineer",
-      "category": "Engineering",
-      "company": "Apple"
-    },
-    {
-      "id": "2db5979e-8f7c-4a06-b9b7-4078724b384a",
-      "title": "Account Executive",
-      "category": "Sales",
-      "company": "Konami"
-    },
-    {
-      "id": "e96bcf47-6b45-4ee1-9c1d-ebdf20b2871e",
-      "title": "Mobile App Developer",
-      "category": "IT",
-      "company": "Apple"
-    },
-    {
-      "id": "aa2a6ebd-5469-48f3-8f03-e06e1f4e7cc1",
-      "title": "Social Media Manager",
-      "category": "Marketing",
-      "company": "Twitch"
-    },
-    {
-      "id": "1f6655c4-cd5c-4b1d-a719-1581b7a58c3d",
-      "title": "Financial Planner",
-      "category": "Finance",
-      "company": "Twitch"
-    },
-    {
-      "id": "55b065dd-99a2-4e9a-a70f-653498b50487",
-      "title": "Chemical Engineer",
-      "category": "Engineering",
-      "company": "Chemical Innovations"
-    },
-    {
-      "id": "3d44b6b5-2329-4f4a-b4e4-d5a6d9a1e5b0",
-      "title": "Business Development Manager",
-      "category": "Sales",
-      "company": "Twitch"
-    },
-    {
-      "id": "1e04cc72-7bd9-45e3-826d-c63a9b5b0362",
-      "title": "UI UX Designer",
-      "category": "IT",
-      "company": "Toastify "
-    },
-    {
-      "id": "3f9ed932-e04a-4615-a052-ec006c2c3369",
-      "title": "React Developper ",
-      "category": "IT",
-      "company": "SQL"
-    },
-    {
-      "id": "4134fd02-160c-4383-be0c-169dc18cb6bd",
-      "title": "Rise Space",
-      "category": "IT",
-      "company": "SQL"
-    },
-    {
-      "id": "399daba0-80bc-470e-9218-e385066ac2c1",
-      "title": "Developer",
-      "category": "Marketing",
-      "company": "Terabyte"
-    },
-    {
-      "id": "463f7121-c8c8-4904-9f87-342eab193509",
-      "title": "Web developer ",
-      "category": "IT",
-      "company": "Konami"
-    },
-    {
-      "id": "2176a0e3-f5a0-4e45-9508-c7a0997d0caa",
-      "title": "Web developert",
-      "category": "Marketing",
-      "company": "Ps5"
-    },
-    {
-      "id": "0e4d9a9c-ee19-4719-884a-69a3221678c5",
-      "title": "ijk",
-      "category": "Finance",
-      "company": "Toastify "
-    },
-    {
-      "id": "f3dfc837-5587-4bc3-853a-aea72e2c8baf",
-      "title": "Disigner Ps",
-      "category": "IT",
-      "company": "La liga"
+      "id": "a2f9ade7-3f36-4d5f-8f76-352b4bfc3b22",
+      "JobTitle": "Merche by amazom",
+      "time": "2023-01-05",
+      "Country": "Algeria",
+      "Description": "test merch by amazon ",
+      "Companies": "La liga",
+      "category": "Finance"
     }
   ]
 }

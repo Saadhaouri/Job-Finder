@@ -1,4 +1,10 @@
-import { FaFacebook, FaInstagram, FaLinkedin, FaX } from "react-icons/fa6";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaX,
+  FaXTwitter,
+} from "react-icons/fa6";
 import Footer from "../Component/FooterDiv/Footer";
 import contactus from "../assets/contactus.png";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -132,19 +138,19 @@ const ContactPage = () => {
 
         <a href="" className=" flex items-center m-12 text-white">
           {" "}
-          <FaFacebook /> Facebook{" "}
+          <FaFacebook className="mr-3" /> Facebook{" "}
         </a>
         <a href="" className=" flex  items-center m-12 text-white">
           {" "}
-          <FaInstagram /> Instagram{" "}
+          <FaInstagram className="mr-3" /> Instagram{" "}
         </a>
         <a href="" className=" flex items-center m-12 text-white">
           {" "}
-          <FaLinkedin /> Linkedin{" "}
+          <FaLinkedin className="mr-3" /> Linkedin{" "}
         </a>
         <a href="" className=" flex items-center m-12  text-white">
           {" "}
-          <FaX /> X{" "}
+          <FaXTwitter className="mr-3" /> Xtwitter{" "}
         </a>
       </div>
 

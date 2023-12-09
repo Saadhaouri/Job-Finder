@@ -13,9 +13,12 @@ import UpdateJobModal from "./UpdateModal";
 
 interface IFormJobs {
   id: string;
-  title: string;
+  JobTitle: string;
+  time: string;
+  Country: string;
+  Description: string;
   category: string;
-  company: string;
+  Companies: string;
 }
 
 const JobsPage: React.FC = () => {
@@ -23,19 +26,21 @@ const JobsPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isAddJobModalOpen, setAddJobModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const jobsPerPage = 5;
+  const jobsPerPage = 6;
   const [jobs, setJobs] = useState<JobModel[]>([]);
   const [Companies, setCompanies] = useState([]);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [selectedJobId, setSelectedJobId] = useState<number | null>(null);
+  const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
   const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
   const [selectedJobToEdit, setSelectedJobToEdit] = useState<JobModel | null>(
     null
   );
+  const [country, setCountry] = useState("");
 
-  const handleUpdateJob = (jobId: number) => {
+  const handleUpdateJob = (jobId: string) => {
     const jobToEdit = jobs.find((job) => job.id === jobId);
     setSelectedJobToEdit(jobToEdit || null);
+    console.log(jobToEdit);
     setUpdateModalOpen(true);
   };
 
@@ -54,7 +59,7 @@ const JobsPage: React.FC = () => {
         : selectedCategories.includes(job.category)
     )
     .filter((job) =>
-      job.title.toLowerCase().includes(searchTerm.toLowerCase())
+      job.JobTitle.toLowerCase().includes(searchTerm.toLowerCase())
     );
   const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
 
@@ -76,7 +81,7 @@ const JobsPage: React.FC = () => {
     );
   };
 
-  const handleDeleteJob = (jobId: number) => {
+  const handleDeleteJob = (jobId: string) => {
     setSelectedJobId(jobId);
     setDeleteModalOpen(true);
   };
@@ -113,9 +118,12 @@ const JobsPage: React.FC = () => {
   const handleAddJobSubmit = async (data: JobModel) => {
     const newJob = new JobModel(
       uuidv4(),
-      data.title,
-      data.category,
-      data.company
+      data.JobTitle,
+      data.time,
+      country,
+      data.Description,
+      data.Companies,
+      data.category
     );
 
     try {
@@ -140,9 +148,12 @@ const JobsPage: React.FC = () => {
     if (selectedJobToEdit) {
       const updatedJob = new JobModel(
         selectedJobToEdit.id,
-        data.title,
-        data.category,
-        data.company
+        data.JobTitle,
+        data.time,
+        country,
+        data.Description,
+        data.Companies,
+        data.category
       );
 
       try {
@@ -157,13 +168,17 @@ const JobsPage: React.FC = () => {
     } else {
       const newJob = new JobModel(
         uuidv4(),
-        data.title,
-        data.category,
-        data.company
+        data.JobTitle,
+        data.time,
+        country,
+        data.Description,
+        data.Companies,
+        data.category
       );
 
       try {
         await jobsAPI.create(newJob);
+        console.log("Test " + newJob);
         toast.success("Job added successfully!");
         setUpdateModalOpen(false);
       } catch (error) {
@@ -219,30 +234,37 @@ const JobsPage: React.FC = () => {
           </button>
         </div>
       </div>
-      <ul>
+      <div className="container p-2 gap-2 rounded-lg grid-cols-2 grid  ">
         {currentJobs.map((job) => (
-          <li key={job.id} className="mb-4 border p-4 rounded">
-            <h2 className="text-xl font-semibold">{job.title}</h2>
-            <p className="text-gray-600">Category: {job.category}</p>
-            <p className="text-gray-600">Company : {job.company}</p>
-            <div className="mt-2 space-x-2">
-              <button
-                onClick={() => handleUpdateJob(job.id)}
-                className="bg-green-500 text-white px-2 py-1 rounded"
-              >
-                Update
-              </button>{" "}
-              <button
-                onClick={() => handleDeleteJob(job.id)}
-                className="bg-red-500 text-white px-2 py-1 rounded"
-              >
-                Delete
-              </button>
+          <div className="container ">
+            <div
+              key={job.id}
+              className="mb-4 bg-white  border p-4 rounded-lg shadow-lg"
+            >
+              <h2 className="text-xl font-semibold">{job.JobTitle}</h2>
+              <p className="text-gray-600"> {job.time}</p>
+              <p className="text-gray-600">Category: {job.category}</p>
+              <p className="text-gray-600">Company : {job.Companies}</p>
+              <p className="text-gray-600">{job.Description}</p>
+              <div className="mt-2 space-x-2">
+                <button
+                  onClick={() => handleUpdateJob(job.id)}
+                  className="bg-green-500 text-white px-2 py-1 rounded"
+                >
+                  Update
+                </button>{" "}
+                <button
+                  onClick={() => handleDeleteJob(job.id)}
+                  className="bg-red-500 text-white px-2 py-1 rounded"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
-      <div className="mt-4">
+      </div>
+      <div className="mt-4 flex justify-center mb-8">
         {Array.from({
           length: Math.ceil(filteredJobs.length / jobsPerPage),
         }).map((page, index) => (
@@ -265,6 +287,7 @@ const JobsPage: React.FC = () => {
         onSubmit={handleAddJobSubmit}
         categories={["IT", "Marketing", "Finance", "Engineering", "Sales"]}
         companies={arrayOfCompanies}
+        setCountry={setCountry}
       />
       <DeleteJobModal
         show={isDeleteModalOpen}
@@ -277,7 +300,7 @@ const JobsPage: React.FC = () => {
         onSubmit={handleUpdateJobSubmit}
         jobToEdit={selectedJobToEdit}
         companies={arrayOfCompanies}
-        categories={categories} // Add companies as a prop
+        categories={["IT", "Marketing", "Finance", "Engineering", "Sales"]} // Add companies as a prop
       />
     </div>
   );

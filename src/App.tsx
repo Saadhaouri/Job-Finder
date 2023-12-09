@@ -13,6 +13,7 @@ import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import Home from "./Component/Main/Home";
 import Company from "./Pages/Company/Company";
+import PageNotFound from "./Pages/PageNotFound";
 
 interface AppContextProps {
   jobs: any[]; // Replace 'any[]' with the actual type of your 'jobs' data
@@ -38,6 +39,7 @@ const App: React.FC = () => {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </AppContext.Provider>
         <ToastContainer />

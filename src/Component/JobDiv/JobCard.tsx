@@ -12,36 +12,33 @@ interface JobCardProps {
     Logo: string;
     Companies: string;
   };
-  handlshow: () => void; // Adjust the type of the handler as needed
+  handleShow: () => void; // Adjust the type of the handler as needed
 }
 
 const JobCard: React.FC<JobCardProps> = ({ job }) => {
   return (
-    <div className="group group/item singleJob w-[250px] p-[20px] bg-white  rounded-[10px] hover:bg-blueColor   shadow-lg shadow-greyIsh-400/700 hover:shadow-lg">
-      <span className="flex justify-between items-center gap-4">
-        <h1 className="text-[16px] font-semibold text-textColor group-hover:text-white ">
-          {job.JobTitle}
-        </h1>
-        <span className="flex justify-center gap-1 text-[8px]">
-          <BiTimeFive />
+    <div className="job-card-container bg-white rounded-md shadow-lg p-4 m-4 max-w-[280px] hover:shadow-xl transition duration-300 ease-in-out">
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-lg font-semibold text-gray-800">{job.JobTitle}</h1>
+        <span className="flex items-center text-xs text-gray-500">
+          <BiTimeFive className="mr-1" />
           {job.time}
         </span>
-      </span>
-      <h6 className="text-[#ccc]">{job.Country}</h6>
-      <p className="text-[13px] text-[#95959] pt-[20px] border-t-[2px] mt-[20px]">
+      </div>
+      <h6 className="text-sm text-gray-500">{job.Country}</h6>
+      <p className="text-sm text-gray-600 mt-4 border-t border-gray-300 pt-4 overflow-hidden max-h-16">
         {job.Description}
       </p>
-      <div className="company flex items-center gap-2">
-        <img src={job.Logo} alt="" className="w-[10%]" />
-        <span className="text-[14px] py-[1rem] block group:hover:text-white">
+      <div className="company flex items-center mt-4">
+        <span className="text-md font-semibold text-blue-500 group-hover:text-white">
           {job.Companies}
         </span>
       </div>
-      <Link to="/login">
-        <button className="border-[2px] rounded-[10px] block p-[10px] w-full text-[14px] font-semibold text-textColor hover:bg-white group-hover/item:text-textColor">
-          Apply Now
-        </button>
-      </Link>
+      <div className=" flex  justify-center bg-blueColor text-white p-2 rounded-lg mt-3">
+        <Link to="/login">
+          <button className="apply-button">Apply Now</button>
+        </Link>
+      </div>
     </div>
   );
 };

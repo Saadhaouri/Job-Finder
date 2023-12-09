@@ -1,8 +1,11 @@
 export default class JobModel {
   constructor(
     public id: string,
-    public title: string,
-    public category: string,
-    public company: string
+    public JobTitle: string,
+    public time: string,
+    public Country: string,
+    public Description: string,
+    public Companies: string,
+    public category: string
   ) {}
 }

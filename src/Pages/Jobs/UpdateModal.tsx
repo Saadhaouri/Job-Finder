@@ -27,12 +27,14 @@ const UpdateJobModal: React.FC<UpdateJobModalProps> = ({
   React.useEffect(() => {
     // Set form values when jobToEdit changes
     if (jobToEdit) {
-      setValue("title", jobToEdit.title);
+      setValue("JobTitle", jobToEdit.JobTitle); // Use the JobModel property names
       setValue("category", jobToEdit.category);
-      setValue("company", jobToEdit.company);
+      setValue("Companies", jobToEdit.Companies);
+      setValue("Description", jobToEdit.Description);
+      setValue("Logo", jobToEdit.Logo);
+      setValue("time", jobToEdit.time);
     }
   }, [jobToEdit, setValue]);
-  console.log(jobToEdit?.company);
   return (
     <>
       {show && (
@@ -49,7 +51,7 @@ const UpdateJobModal: React.FC<UpdateJobModalProps> = ({
                 </label>
                 <input
                   type="text"
-                  {...register("title", { required: "Title is required" })}
+                  {...register("JobTitle", { required: "Title is required" })}
                   placeholder="Title of Job"
                   className="mt-1 p-2 border rounded-md w-full"
                 />
@@ -68,7 +70,7 @@ const UpdateJobModal: React.FC<UpdateJobModalProps> = ({
                   className="mt-1 p-2 border rounded-md w-full"
                 >
                   {/* Add a default option */}
-                  <option value="" disabled defaultValue={jobToEdit?.category}>
+                  <option value="" disabled>
                     Select Category
                   </option>
                   {/* Map over your categories and create an option for each */}
@@ -84,16 +86,16 @@ const UpdateJobModal: React.FC<UpdateJobModalProps> = ({
                   htmlFor="company"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Company {jobToEdit?.company}
+                  Company
                 </label>
                 <select
-                  {...register("company", {
+                  {...register("Companies", {
                     required: "Company is required",
                   })}
                   className="mt-1 p-2 border rounded-md w-full"
                 >
                   {/* Add a default option */}
-                  <option value="" disabled defaultValue={jobToEdit?.company}>
+                  <option value="" disabled>
                     Select Company
                   </option>
                   {/* Map over your companies and create an option for each */}
@@ -104,6 +106,37 @@ const UpdateJobModal: React.FC<UpdateJobModalProps> = ({
                   ))}
                 </select>
               </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="description"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Description
+                </label>
+                <textarea
+                  {...register("Description", {
+                    required: "Description is required",
+                  })}
+                  placeholder="Description of the job"
+                  className="mt-1 p-2 border rounded-md w-full"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="time"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Time
+                </label>
+                <input
+                  type="text"
+                  {...register("time", { required: "Time is required" })}
+                  placeholder="Time of the job"
+                  className="mt-1 p-2 border rounded-md w-full"
+                />
+              </div>
+
               <div className="footermodal flex justify-end text-right">
                 <button
                   type="submit"
